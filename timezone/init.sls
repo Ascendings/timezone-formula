@@ -20,5 +20,8 @@ timezone_symlink:
     - name: {{ confmap.path_localtime }}
     - target: {{ confmap.path_zoneinfo }}{{ timezone }}
     - force: true
+    {% if confmap.pkgname != False -%}
     - require:
       - pkg: {{ confmap.pkgname }}
+    {%- endif %}
+
