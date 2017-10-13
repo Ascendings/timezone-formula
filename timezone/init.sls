@@ -9,9 +9,11 @@ timezone_setting:
     - name: {{ timezone }}
     - utc: {{ utc }}
 
+{% if confmap.pkgname != False -%}
 timezone_packages:
   pkg.installed:
     - name: {{ confmap.pkgname }}
+{%- endif %}
 
 timezone_symlink:
   file.symlink:
